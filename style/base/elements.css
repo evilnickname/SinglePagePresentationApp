@@ -1,0 +1,14 @@
+footer {
+  border-top: 1px solid rgba(255,255,255,.255);
+  font-family: 'Fira Mono', monospace;
+  text-align: center;
+}
+
+small {
+  font-size: .75em;
+}
+
+textarea {
+  font-family: monospace;
+  font-weight: normal;
+}

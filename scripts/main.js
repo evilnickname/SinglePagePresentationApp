@@ -51,7 +51,7 @@ sppa.main = (function () {
       
       infopane = document.getElementById('infopane'),
       infopaneToggle = function () {
-        infopane.classList.toggle('infopane--visible');
+        infopane.classList.toggle('hidden');
       }
 
   return {

@@ -1,0 +1,11 @@
+a, a:link {
+  background-image: linear-gradient(to bottom, transparent 0px, transparent 50%, currentColor 50%, currentColor 100%);
+  background-position: 0 90%;
+  background-repeat: repeat-x;
+  background-size: 2px 2px;
+  color: currentColor;
+  text-decoration: none;
+}
+a:hover {
+  background-image: linear-gradient(to bottom, transparent 0px, transparent 50%, #999 50%, #999 100%);
+}

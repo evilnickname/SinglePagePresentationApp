@@ -2,33 +2,16 @@ sppa.extend('sppa.keybindings');
 
 sppa.keybindings = (function () {
   var bind = function () {
-        document.documentElement.addEventListener('keypress', keyListener, false);
+        document.documentElement.addEventListener('keyup', keyListener, false);
       },
       unbind = function () {
-        document.documentElement.removeEventListener('keypress', keyListener);
+        document.documentElement.removeEventListener('keyup', keyListener);
       },
   
       keyListener = function (evt) {
-    //    console.log(evt)
-
-        switch (evt.charCode) {
-          case 32: /* spacebar */
-            sppa.navigation.next();
-          case 63: /* ? */
-          case 105: /* i */
-            sppa.main.infopaneToggle();
-            break;
-          case 101: /* e */
-            sppa.editmode.toggle();
-            break;
-          case 102: /* f */
-            sppa.main.fullscreenToggle();
-            break;
-        }
-
         switch (evt.keyCode) {
           case 27: /* Esc */
-            if (sppa.main.infopane.classList.contains('infopane--visible')) {
+            if (!sppa.main.infopane.classList.contains('hidden')) {
               sppa.main.infopaneToggle();
             }
             break;
@@ -39,6 +22,7 @@ sppa.keybindings = (function () {
           case 40: /* ArrowUp */
             sppa.navigation.prev();
             break;
+          case 32: /* Spacebar */
           case 34: /* PageDown */
           case 39: /* ArrowRight */
           case 40: /* ArrowDown */
@@ -49,6 +33,15 @@ sppa.keybindings = (function () {
             break;
           case 35: /* End */
             sppa.navigation.goto(sppa.navigation.lastSlideIndex);
+            break;
+          case 73: /* i */
+            sppa.main.infopaneToggle();
+            break;
+          case 69: /* e */
+            sppa.editmode.toggle();
+            break;
+          case 70: /* f */
+            sppa.main.fullscreenToggle();
             break;
         }   
       };

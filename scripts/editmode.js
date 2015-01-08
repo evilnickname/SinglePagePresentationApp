@@ -8,10 +8,13 @@ sppa.editmode = (function () {
         document.getElementById('toggleEditMode').addEventListener('click', sppa.editmode.toggle, false);      
       },
   
-      createSlide = function () {
+      createSlide = function (htmlString) {
         var slide = document.createElement('ARTICLE');
         slide.setAttribute('class', 'slide');
-        document.getElementById('slides').appendChild(slide);
+        if (htmlString) {
+          slide.innerHTML = htmlString;
+        }
+        return slide;
       },
       
       slideEditorBreakdown = function () {

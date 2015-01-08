@@ -9,12 +9,13 @@
     
     <div class="slides" id="slides">
       <article class="slide slide--active">
-        <h1>Todo</h1>
+        <h1>Single Page Presentation App</h1>
         <ul>
-          <li>Navigate slides</li>
-          <li>Edit mode</li>
-          <li>Key bindings</li>
+          <li>Add and remove slides</li>
+          <li>Store and retrieve changes in local storage</li>
+          <li>Prettify (obviously)</li>
         </ul>
+        <p>Press <kbd>i</kbd> for info.</p>
       </article>
       
       <article class="slide">
@@ -36,10 +37,39 @@
     </aside>    
     
     
-    <aside class="infopane" id="infopane">
-      <kbd>space</kbd>
-      <kbd>ArrowRight</kbd>
-      <kbd>ArrowDown</kbd>
+    <aside class="infopane hidden light-keys" id="infopane">
+      <h1>Info</h1>
+      <div class="clearfix">
+        <section>
+          <h2>Keybindings</h2>
+          <dl>
+            <dt><kbd>i</kbd></dt>
+            <dd>Show help (this thingy right here)</dd>
+            <dt><kbd>e</kbd></dt>
+            <dd>Toggle edit mode</dd>
+            <dt><kbd>f</kbd></dt>
+            <dd>Toggle fullscreen</dd>
+            <dt><kbd>Esc</kbd></dt>
+            <dd>Exit fullscreen / close this screen</dd>
+          </dl>
+        </section>
+        <section>
+          <h2>Slide navigation</h2>
+          <dl>
+            <dt><kbd>PgUp</kbd> / <kbd>◀</kbd> / <kbd>▲</kbd> / <kbd>Backspace</kbd></dt>
+            <dd>Go to previous slide</dd>
+            <dt><kbd>PgDn</kbd> / <kbd>▶</kbd> / <kbd>▼</kbd> / <kbd>Space</kbd></dt>
+            <dd>Go to next slide</dd>
+            <dt><kbd>Home</kbd></dt>
+            <dd>Go to first slide</dd>
+            <dt><kbd>End</kbd></dt>
+            <dd>Go to last slide</dd>
+          </dl>
+        </section>
+      </div>
+      <footer>
+        <small><a href="https://github.com/evilnickname/single-page-presentation-app">Single Page Presentation App</a> by <a href="http://www.evilnickname.org">William Groenendijk</a>.</small>
+      </footer>
     </aside>
 
     <script src="scripts/main.js"></script>
