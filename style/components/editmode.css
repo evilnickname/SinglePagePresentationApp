@@ -4,30 +4,28 @@
   right: 1vw;
   z-index: 100;
 }
-/*
-[data-editmode] .toggleEditMode {
-  display: none;
-}
-*/
+
 .toggleEditMode {
 }
 
 .editor {
-  display: none;
+  opacity: 0;
 }
+
 [data-editmode] .editor {
-  display: block;
+  background-color: #333;
   position: fixed;
-  bottom: 0;
   right: 0;
-  left: 0;
-  top: 50vh;
-  z-index: 50;
+  top: 0;
+  width: 50vw;
+  height: 100vh;
+  z-index: 5;
   padding: 2vh 2vw;
-  
-  background: darkgray;
+  opacity: 1;
+  transition: opacity .2s ease-in;
 }
 
 .editor textarea {
-  height: 20vw;
+  height: 45vh;
+  width: 45vw;
 }

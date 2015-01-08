@@ -5,7 +5,7 @@
 /* generic (@fontface, boxsizing, css resets) */
 @import url(generic/boxsizing.css);
 @import url(generic/normalize.css);
-@import url(//brick.a.ssl.fastly.net/Fira+Mono:400/Fira+Sans:300,500);
+@import url(//brick.a.ssl.fastly.net/Fira+Mono:400/Fira+Sans:300,700);
 
 /* base (unstyled elements) */
 @import url(base/page.css);

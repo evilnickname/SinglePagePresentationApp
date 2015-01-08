@@ -6,11 +6,6 @@ html, body {
   overflow: hidden;
 }
 
-.no-js, .no-js body, 
-[data-editmode], [data-editmode] body {
-  overflow: auto;
-}
-
 /*
  * [1] http://lea.verou.me/css3patterns/#carbon-fibre
  */

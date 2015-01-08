@@ -1,14 +1,24 @@
 .infopane {
-  position: fixed; top: 25vh; left: 50%;
+  position: fixed; top: 0; left: 50%;
   z-index: 100;
   width: 600px;
   padding: 10px;
   margin-left: -300px;
   
   background-color: #333;
-  border: 1vw solid #eee;
-  border-radius: 20px;
+  border: 1vw solid #000;
+  border-top: 0;
+  border-radius: 0 0 20px 20px;
+  box-shadow: 0 0 3em 1em rgba(0,0,0,.7);
   color: white;
+
+  transform: translate3D(0%, 0%, 0px);
+  transition: 0.5s transform ease-in;
+}
+
+.infopane--offscreen {
+  box-shadow: initial;
+  transform: translate3D(0%, -100%, 0px);
 }
 
 .infopane section {

@@ -23,7 +23,6 @@ sppa.main = (function () {
         sppa.slides.init();
         sppa.keybindings.bind();
         sppa.editmode.init();
-        document.documentElement.classList.remove('no-js');
       },
       
       fullscreenToggle = function () {
@@ -54,7 +53,7 @@ sppa.main = (function () {
       
       infopane = document.getElementById('infopane'),
       infopaneToggle = function () {
-        infopane.classList.toggle('hidden');
+        infopane.classList.toggle('infopane--offscreen');
       }
 
   return {

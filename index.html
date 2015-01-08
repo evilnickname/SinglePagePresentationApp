@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <title>Single Page Presentation App</title>
@@ -8,14 +8,14 @@
   <body>
     
     <div class="slides" id="slides">
-      <article class="slide slide--active">
+      <article class="slide slide--active"><!-- Hi! This is the default slide. Feel free to edit. All html is allowed. -->
         <h1>Single Page Presentation App</h1>
         <ul>
           <li>Vanilla javascript</li>
           <li>Slides are editable</li>
           <li>Changes stored in localStorage</li>
         </ul>
-        <p>Press <kbd>i</kbd> for info.</p>
+        <p>Press <kbd>i</kbd> for more info.</p>
       </article>
     </div>
     
@@ -34,7 +34,7 @@
       </section>
     </aside>    
 
-    <aside class="infopane hidden light-keys" id="infopane">
+    <aside class="infopane infopane--offscreen light-keys" id="infopane">
       <div class="clearfix">
         <section>
           <h2>Keybindings</h2>
