@@ -1,0 +1,33 @@
+.editbar {
+  position: fixed;
+  bottom: 1vw;
+  right: 1vw;
+  z-index: 100;
+}
+/*
+[data-editmode] .toggleEditMode {
+  display: none;
+}
+*/
+.toggleEditMode {
+}
+
+.editor {
+  display: none;
+}
+[data-editmode] .editor {
+  display: block;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  top: 50vh;
+  z-index: 50;
+  padding: 2vh 2vw;
+  
+  background: darkgray;
+}
+
+.editor textarea {
+  height: 20vw;
+}

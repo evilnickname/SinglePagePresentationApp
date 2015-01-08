@@ -1,0 +1,14 @@
+.infopane {
+  display: none;
+  position: fixed; top: 25vh; left: 50%;
+  z-index: 100;
+  width: 500px;
+  margin-left: -250px;
+  
+  background-color: lightgray;
+  border: 2px solid darkgray;
+}
+
+.infopane--visible {
+  display: block;
+}

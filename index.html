@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <title>Single Page Presentation App</title>
+    <link rel="stylesheet" href="style/stylesheet.css">
+  </head>
+  <body>
+    
+    <div class="slides" id="slides">
+      <article class="slide slide--active">
+        <h1>Todo</h1>
+        <ul>
+          <li>Navigate slides</li>
+          <li>Edit mode</li>
+          <li>Key bindings</li>
+        </ul>
+      </article>
+      
+      <article class="slide">
+        <h1>Hello Kitty</h1>
+        <ul>
+          <li>Lorum ipsum</li>
+          <li>Dolor sit amet</li>
+        </ul>
+      </article>
+    </div>
+    
+    <section class="editbar">
+      <button class="toggleEditMode" id="toggleEditMode">Edit</button>
+    </section>
+    
+    <aside id="editpane" class="editor">
+      <h1>Edit slide below</h1>
+      <pre><textarea class="editor__input" id="editor"></textarea></pre>
+    </aside>    
+    
+    
+    <aside class="infopane" id="infopane">
+      <kbd>space</kbd>
+      <kbd>ArrowRight</kbd>
+      <kbd>ArrowDown</kbd>
+    </aside>
+
+    <script src="scripts/main.js"></script>
+    <script src="scripts/editmode.js"></script>
+    <script src="scripts/localstorage.js"></script>
+    <script src="scripts/keybindings.js"></script> 
+    <script src="scripts/navigation.js"></script> 
+    <script>sppa.main.init();</script>
+  </body>
+</html>
