@@ -11,7 +11,6 @@
       <article class="slide slide--active">
         <h1>Single Page Presentation App</h1>
         <ul>
-          <li>Add and remove slides</li>
           <li>Store and retrieve changes in local storage</li>
           <li>Prettify (obviously)</li>
         </ul>
@@ -28,17 +27,19 @@
     </div>
     
     <section class="editbar">
-      <button class="toggleEditMode" id="toggleEditMode">Edit</button>
+      <button type="button" class="toggleEditMode" id="toggleEditMode">Edit</button>
     </section>
     
     <aside id="editpane" class="editor">
-      <h1>Edit slide below</h1>
-      <pre><textarea class="editor__input" id="editor"></textarea></pre>
+      <h1>Edit current slide</h1>
+      <textarea class="editor__input" id="editor"></textarea>
+      <section class="editor__controls">
+        <button type="button" id="insertBefore">Insert slide before current</button>
+        <button type="button" id="insertAfter">Insert slide after current</button>
+      </section>
     </aside>    
-    
-    
+
     <aside class="infopane hidden light-keys" id="infopane">
-      <h1>Info</h1>
       <div class="clearfix">
         <section>
           <h2>Keybindings</h2>
@@ -56,7 +57,7 @@
         <section>
           <h2>Slide navigation</h2>
           <dl>
-            <dt><kbd>PgUp</kbd> / <kbd>◀</kbd> / <kbd>▲</kbd> / <kbd>Backspace</kbd></dt>
+            <dt><kbd>PgUp</kbd> / <kbd>◀</kbd> / <kbd>▲</kbd></dt>
             <dd>Go to previous slide</dd>
             <dt><kbd>PgDn</kbd> / <kbd>▶</kbd> / <kbd>▼</kbd> / <kbd>Space</kbd></dt>
             <dd>Go to next slide</dd>

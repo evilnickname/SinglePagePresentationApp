@@ -9,17 +9,16 @@ sppa.keybindings = (function () {
       },
   
       keyListener = function (evt) {
+//        console.log(evt.keyCode);
         switch (evt.keyCode) {
           case 27: /* Esc */
             if (!sppa.main.infopane.classList.contains('hidden')) {
               sppa.main.infopaneToggle();
             }
             break;
-          case 8: /* BackSpace */
-            evt.preventDefault();
           case 33: /* PageUp */
           case 37: /* ArrowLeft */
-          case 40: /* ArrowUp */
+          case 38: /* ArrowUp */
             sppa.navigation.prev();
             break;
           case 32: /* Spacebar */

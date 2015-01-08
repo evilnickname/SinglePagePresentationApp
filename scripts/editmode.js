@@ -5,7 +5,9 @@ sppa.editmode = (function () {
       _slide,
       
       init = function () {
-        document.getElementById('toggleEditMode').addEventListener('click', sppa.editmode.toggle, false);      
+        document.getElementById('toggleEditMode').addEventListener('click', toggle, false);
+        document.getElementById('insertAfter').addEventListener('click', insertSlideAfter, false);
+        document.getElementById('insertBefore').addEventListener('click', insertSlideBefore, false);
       },
   
       createSlide = function (htmlString) {
@@ -17,6 +19,18 @@ sppa.editmode = (function () {
         return slide;
       },
       
+      insertSlideAfter = function () {
+        var refSlide = document.querySelector('.slide--active');
+        document.getElementById('slides').insertBefore(createSlide(), refSlide.nextElementSibling);
+        sppa.navigation.next();
+      },
+
+      insertSlideBefore = function () {
+        var refSlide = document.querySelector('.slide--active');
+        document.getElementById('slides').insertBefore(createSlide(), refSlide);
+        sppa.navigation.prev();
+      },
+
       slideEditorBreakdown = function () {
         _editor.value = null;
         _editor.removeEventListener('input', slideUpdate);
@@ -38,6 +52,7 @@ sppa.editmode = (function () {
         for (var i = 0, n = slides.length; i < n; i++) {
           slideArray.push(slides[i].innerHTML);
         }
+        console.log(slideArray.toString())
         sppa.storage.save(slideArray, 'sppa');
       },  
       
