@@ -19,19 +19,19 @@ sppa.keybindings = (function () {
           case 33: /* PageUp */
           case 37: /* ArrowLeft */
           case 38: /* ArrowUp */
-            sppa.navigation.prev();
+            sppa.slides.prev();
             break;
           case 32: /* Spacebar */
           case 34: /* PageDown */
           case 39: /* ArrowRight */
           case 40: /* ArrowDown */
-            sppa.navigation.next();
+            sppa.slides.next();
             break;
           case 36: /* Home */
-            sppa.navigation.goto(0);
+            sppa.slides.goto(0);
             break;
           case 35: /* End */
-            sppa.navigation.goto(sppa.navigation.lastSlideIndex);
+            sppa.slides.goto(sppa.slides.lastSlideIndex);
             break;
           case 73: /* i */
             sppa.main.infopaneToggle();

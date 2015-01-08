@@ -17,7 +17,10 @@ sppa.extend = function (namespaceAsString) {
 sppa.extend('sppa.main');
 
 sppa.main = (function () {
-  var init = function () {
+  var slideContainer = document.getElementById('slides'),
+
+      init = function () {
+        sppa.slides.init();
         sppa.keybindings.bind();
         sppa.editmode.init();
         document.documentElement.classList.remove('no-js');
@@ -58,6 +61,7 @@ sppa.main = (function () {
     fullscreenToggle: fullscreenToggle,
     init: init,
     infopane: infopane,
-    infopaneToggle: infopaneToggle
+    infopaneToggle: infopaneToggle,
+    slideContainer: slideContainer
   }
 })();

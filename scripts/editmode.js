@@ -8,27 +8,41 @@ sppa.editmode = (function () {
         document.getElementById('toggleEditMode').addEventListener('click', toggle, false);
         document.getElementById('insertAfter').addEventListener('click', insertSlideAfter, false);
         document.getElementById('insertBefore').addEventListener('click', insertSlideBefore, false);
+        document.getElementById('deleteSlide').addEventListener('click', deleteSlide, false);
+        document.getElementById('reset').addEventListener('click', sppa.storage.clear, false);
       },
-  
-      createSlide = function (htmlString) {
-        var slide = document.createElement('ARTICLE');
-        slide.setAttribute('class', 'slide');
-        if (htmlString) {
-          slide.innerHTML = htmlString;
-        }
-        return slide;
+
+      deleteSlide = function () {
+        var refSlide = document.querySelector('.slide--active'),
+            refSlideIndex = [].indexOf.call(sppa.main.slideContainer.children, refSlide);
+        sppa.main.slideContainer.removeChild(refSlide);
+        sppa.slides.goto(refSlideIndex > 1 ? refSlideIndex - 1 : 0);
+        saveSlideDeck();
       },
       
+      editorUpdate = function () {
+        _editor.value = _slide.innerHTML;
+      },
+
       insertSlideAfter = function () {
         var refSlide = document.querySelector('.slide--active');
-        document.getElementById('slides').insertBefore(createSlide(), refSlide.nextElementSibling);
-        sppa.navigation.next();
+        sppa.main.slideContainer.insertBefore(sppa.slides.createSlide(), refSlide.nextElementSibling);
+        sppa.slides.next();
       },
 
       insertSlideBefore = function () {
         var refSlide = document.querySelector('.slide--active');
-        document.getElementById('slides').insertBefore(createSlide(), refSlide);
-        sppa.navigation.prev();
+        sppa.main.slideContainer.insertBefore(sppa.slides.createSlide(), refSlide);
+        sppa.slides.prev();
+      },
+
+      saveSlideDeck = function () {
+        var slides =  document.querySelectorAll('.slide'),
+            slideObj = {};
+        for (var i = 0, n = slides.length; i < n; i++) {
+          slideObj[i] = slides[i].innerHTML;
+        }
+        sppa.storage.save(JSON.stringify(slideObj), 'sppa');
       },
 
       slideEditorBreakdown = function () {
@@ -45,28 +59,14 @@ sppa.editmode = (function () {
         _editor.addEventListener('blur', sppa.keybindings.bind, false);
         editorUpdate();
       },
-  
-      saveSlideDeck = function () {
-        var slides =  document.querySelectorAll('.slide'),
-            slideArray = [];
-        for (var i = 0, n = slides.length; i < n; i++) {
-          slideArray.push(slides[i].innerHTML);
-        }
-        console.log(slideArray.toString())
-        sppa.storage.save(slideArray, 'sppa');
-      },  
+
+      slideUpdate = function () {
+        _slide.innerHTML = _editor.value;
+      },
       
       swapEditor = function () {
         _slide = document.querySelector('.slide--active');
         editorUpdate();
-      },
-      
-      editorUpdate = function () {
-        _editor.value = _slide.innerHTML;
-      },
-      
-      slideUpdate = function () {
-        _slide.innerHTML = _editor.value;
       },
               
       toggle = function() {

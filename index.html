@@ -11,18 +11,11 @@
       <article class="slide slide--active">
         <h1>Single Page Presentation App</h1>
         <ul>
-          <li>Store and retrieve changes in local storage</li>
-          <li>Prettify (obviously)</li>
+          <li>Vanilla javascript</li>
+          <li>Slides are editable</li>
+          <li>Changes stored in localStorage</li>
         </ul>
         <p>Press <kbd>i</kbd> for info.</p>
-      </article>
-      
-      <article class="slide">
-        <h1>Hello Kitty</h1>
-        <ul>
-          <li>Lorum ipsum</li>
-          <li>Dolor sit amet</li>
-        </ul>
       </article>
     </div>
     
@@ -36,6 +29,8 @@
       <section class="editor__controls">
         <button type="button" id="insertBefore">Insert slide before current</button>
         <button type="button" id="insertAfter">Insert slide after current</button>
+        <button type="button" id="deleteSlide">Delete current slide</button>
+        <button type="button" id="reset">Reset presentation</button>
       </section>
     </aside>    
 
@@ -75,9 +70,9 @@
 
     <script src="scripts/main.js"></script>
     <script src="scripts/editmode.js"></script>
-    <script src="scripts/localstorage.js"></script>
+    <script src="scripts/storage.js"></script>
     <script src="scripts/keybindings.js"></script> 
-    <script src="scripts/navigation.js"></script> 
+    <script src="scripts/slides.js"></script>
     <script>sppa.main.init();</script>
   </body>
 </html>
