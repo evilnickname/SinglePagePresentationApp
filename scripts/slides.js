@@ -86,8 +86,8 @@ sppa.slides = (function () {
     createSlide: createSlide,
     init: init,
     goto: goto,
-    next: next,
     lastSlideIndex: _slides.length - 1,
+    next: next,
     prev: prev
   };
 })();
