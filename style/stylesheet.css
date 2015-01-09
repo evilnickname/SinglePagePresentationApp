@@ -1,8 +1,10 @@
 /* based on ITCSS by Harry Roberts */
-/* settings */
-/* tools */
 
-/* generic (@fontface, boxsizing, css resets) */
+/* settings (SASS/LESS variables and the like) */
+
+/* tools (mixins and the like go here) */
+
+/* generic (@fontface, boxsizing, css normalize/resets) */
 @import url(generic/boxsizing.css);
 @import url(generic/normalize.css);
 @import url(//brick.a.ssl.fastly.net/Fira+Mono:400/Fira+Sans:300,700);
@@ -18,10 +20,12 @@
 
 /* components (re-usable elements) */
 @import url(components/editmode.css);
-@import url(components/infopane.css);
-@import url(components/slide.css);
-@import url(components/keys.css);
 @import url(components/icons.css);
+@import url(components/infopane.css);
+@import url(components/keys.css);
+@import url(components/slides.css);
+@import url(components/slide.css);
+@import url(components/toolbar.css);
 
 /* trumps (utility classes, etc.) */
 @import url(trumps/utilities.css);

@@ -39,29 +39,27 @@ sppa.main = (function () {
         /* edit functions */
         sppa.editmode.attachEventListeners();
 
-//        document.getElementById().addEventListener('click', ,false);
+        /* fullscreen */
+        fullscreen.addFullscreenchangeEventListener();
 
 
       },
 
-      toggleInfopane = function () {
-        sppa.main.toggleDocMode('infopane');
-      },
-
-      toggleFullscreen = function () {
+      fullscreen = {
         /* https://developer.mozilla.org/en-US/docs/Web/Guide/API/DOM/Using_full_screen_mode#Toggling_fullscreen_mode */
-        if (!document.fullscreenElement &&    // alternative standard method
-            !document.mozFullScreenElement && !document.webkitFullscreenElement && !document.msFullscreenElement ) {  // current working methods
-          if (docElem.requestFullscreen) {
-            docElem.requestFullscreen();
-          } else if (docElem.msRequestFullscreen) {
-            docElem.msRequestFullscreen();
-          } else if (docElem.mozRequestFullScreen) {
-            docElem.mozRequestFullScreen();
-          } else if (docElem.webkitRequestFullscreen) {
-            docElem.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
+        addFullscreenchangeEventListener : function () {
+          if ('requestFullscreen' in docElem) {
+            document.addEventListener('fullscreenchange', fullscreen.fullscreenchangeListener, false)
+          } else if ('msRequestFullscreen' in docElem) {
+            document.addEventListener('MSFullscreenChange', fullscreen.fullscreenchangeListener, false)
+          } else if ('mozRequestFullScreen' in docElem) {
+            document.addEventListener('mozfullscreenchange', fullscreen.fullscreenchangeListener, false)
+          } else if ('webkitRequestFullScreen' in docElem) {
+            document.addEventListener('webkitfullscreenchange', fullscreen.fullscreenchangeListener, false)
           }
-        } else {
+        },
+
+        exitFullscreen : function () {
           if (document.exitFullscreen) {
             document.exitFullscreen();
           } else if (document.msExitFullscreen) {
@@ -71,6 +69,43 @@ sppa.main = (function () {
           } else if (document.webkitExitFullscreen) {
             document.webkitExitFullscreen();
           }
+        },
+
+        fullscreenchangeListener : function () {
+          if (!fullscreen.hasFullscreenElement()) {
+            sppa.main.toggleDocMode('fullscreen');
+          }
+        },
+
+        hasFullscreenElement : function () {
+          return (document.fullscreenElement
+                  || document.mozFullScreenElement
+                  || document.webkitFullscreenElement
+                  || document.msFullscreenElement);
+        },
+
+        requestFullscreen : function () {
+          if (docElem.requestFullscreen) {
+            docElem.requestFullscreen();
+          } else if (docElem.msRequestFullscreen) {
+            docElem.msRequestFullscreen();
+          } else if (docElem.mozRequestFullScreen) {
+            docElem.mozRequestFullScreen();
+          } else if (docElem.webkitRequestFullscreen) {
+            docElem.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
+          }
+        }
+      },
+
+      toggleInfopane = function () {
+        sppa.main.toggleDocMode('infopane');
+      },
+
+      toggleFullscreen = function () {
+        if (!fullscreen.hasFullscreenElement()) {
+          fullscreen.requestFullscreen();
+        } else {
+          fullscreen.exitFullscreen();
         }
         sppa.main.toggleDocMode('fullscreen');
       },

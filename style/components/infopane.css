@@ -12,6 +12,7 @@
   color: white;
 
   box-shadow: initial;
+  -webkit-transform: translate3D(0%, -100%, 0px);
   transform: translate3D(0%, -100%, 0px);
 
   transition-property: boxshadow, transform;
@@ -21,6 +22,7 @@
 
 [data-infopane] .infopane {
   box-shadow: 0 0 3em 1em rgba(0,0,0,.7);
+  -webkit-transform: translate3D(0%, 0%, 0px);
   transform: translate3D(0%, 0%, 0px);
 }
 

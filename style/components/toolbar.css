@@ -1,0 +1,28 @@
+.toolbar {
+  position: fixed;
+  bottom: 1vw;
+  right: 1vw;
+  z-index: 50;
+}
+
+.toolbar .icon,
+[data-editmode] .toolbar__toggleEditMode .icon,
+[data-editmode][data-infopane] .toolbar__toggleInfoPane .icon,
+[data-editmode][data-fullscreen] .toolbar__toggleFullScreen .icon {
+  color: #eee;
+}
+
+[data-editmode] .icon,
+[data-infopane] .toolbar__toggleInfoPane .icon,
+[data-fullscreen] .toolbar__toggleFullScreen .icon {
+  color: #999;
+}
+
+.toolbar .icon-arrow-minimise,
+[data-fullscreen] .toolbar .icon-arrow-maximise {
+  display: none;
+}
+
+[data-fullscreen] .toolbar .icon-arrow-minimise {
+  display: inline-block;
+}

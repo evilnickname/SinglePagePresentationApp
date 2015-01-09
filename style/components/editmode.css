@@ -1,31 +1,3 @@
-.editbar {
-  position: fixed;
-  bottom: 1vw;
-  right: 1vw;
-  z-index: 100;
-}
-
-.editbar .icon,
-[data-editmode] .editbar__toggleEditMode .icon,
-[data-editmode][data-infopane] .editbar__toggleInfoPane .icon,
-[data-editmode][data-fullscreen] .editbar__toggleFullScreen .icon {
-  color: #eee;
-}
-
-[data-editmode] .icon,
-[data-infopane] .editbar__toggleInfoPane .icon,
-[data-fullscreen] .editbar__toggleFullScreen .icon {
-  color: #999;
-}
-
-.editbar .icon-arrow-minimise,
-[data-fullscreen] .editbar .icon-arrow-maximise {
-  display: none;
-}
-[data-fullscreen] .editbar .icon-arrow-minimise {
-  display: inline-block;
-}
-
 .editor {
   display: none;
 }
@@ -77,5 +49,6 @@
 .editor__button .icon-refresh {
   left: -2px;
   top: -2px;
+  -webkit-transform: scaleX(-1);
   transform: scaleX(-1);
 }
