@@ -9,10 +9,11 @@
 }
 
 .editor {
-  opacity: 0;
+  display: none;
 }
 
 [data-editmode] .editor {
+  display: block;
   background-color: #333;
   position: fixed;
   right: 0;
@@ -21,8 +22,6 @@
   height: 100vh;
   z-index: 5;
   padding: 2vh 2vw;
-  opacity: 1;
-  transition: opacity .2s ease-in;
 }
 
 .editor textarea {
