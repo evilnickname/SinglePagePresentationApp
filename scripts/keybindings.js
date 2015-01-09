@@ -10,9 +10,10 @@ sppa.keybindings = (function () {
   
       keyListener = function (evt) {
 //        console.log(evt.keyCode);
+        evt.preventDefault();
         switch (evt.keyCode) {
           case 27: /* Esc */
-            if (!sppa.main.infopane.classList.contains('hidden')) {
+            if (!sppa.main.infopane.classList.contains('infopane--offscreen')) {
               sppa.main.infopaneToggle();
             }
             break;
@@ -42,7 +43,7 @@ sppa.keybindings = (function () {
           case 70: /* f */
             sppa.main.fullscreenToggle();
             break;
-        }   
+        }
       };
   
   return {

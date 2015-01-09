@@ -13,10 +13,10 @@ sppa.storage = (function () {
       },
 
       retrieve = function (key) {
-        return window.localStorage[key];
+        return window.localStorage.getItem(key);
       }
       save = function (data, key) {
-        window.localStorage[key] = data;
+        window.localStorage.setItem(key, data);
       };
 
   return {

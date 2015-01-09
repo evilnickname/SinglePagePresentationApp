@@ -37,12 +37,12 @@ sppa.editmode = (function () {
       },
 
       saveSlideDeck = function () {
-        var slides =  document.querySelectorAll('.slide'),
-            slideObj = {};
+        var slides =  document.querySelectorAll('.slide');
+        window.localStorage.clear();
         for (var i = 0, n = slides.length; i < n; i++) {
-          slideObj[i] = slides[i].innerHTML;
+          sppa.storage.save(slides[i].innerHTML, 'sppa-slide-' + i);
         }
-        sppa.storage.save(JSON.stringify(slideObj), 'sppa');
+        sppa.storage.save(slides.length, 'sppa-slide-length');
       },
 
       slideEditorBreakdown = function () {

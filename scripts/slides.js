@@ -44,22 +44,24 @@ sppa.slides = (function () {
       },
 
       loadSlideDeck = function () {
-        var slideData = sppa.storage.retrieve('sppa');
-        if (slideData) {
-          var slides = JSON.parse(slideData),
-              docFrag = document.createDocumentFragment();
-          for (var key in slides) {
-            if (slides.hasOwnProperty(key)) {
-              var newSlide = createSlide(slides[key]);
-              if (key === "0") {
-                newSlide.classList.add('slide--active');
-              }
-              docFrag.appendChild(newSlide);
-            }
-          }
-          clearSlideContainer();
-          sppa.main.slideContainer.appendChild(docFrag);
+        var storedSlideLength = sppa.storage.retrieve('sppa-slide-length'),
+             docFrag = document.createDocumentFragment();
+
+        if (!storedSlideLength) {
+          return false;
         }
+
+        for (var i = 0; i < storedSlideLength; i++) {
+          var newSlide = createSlide(sppa.storage.retrieve('sppa-slide-' + i));
+          newSlide.setAttribute('id', 'sppa-slide-' + i);
+          if (i === 0) {
+            newSlide.classList.add('slide--active');
+          }
+          console.log(newSlide);
+          docFrag.appendChild(newSlide);
+        }
+        clearSlideContainer();
+        sppa.main.slideContainer.appendChild(docFrag);
       },
 
       next = function () {
