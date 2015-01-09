@@ -21,6 +21,7 @@
 @import url(components/infopane.css);
 @import url(components/slide.css);
 @import url(components/keys.css);
+@import url(components/icons.css);
 
 /* trumps (utility classes, etc.) */
 @import url(trumps/utilities.css);

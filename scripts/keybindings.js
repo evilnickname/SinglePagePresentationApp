@@ -1,20 +1,23 @@
 sppa.extend('sppa.keybindings');
 
 sppa.keybindings = (function () {
-  var bind = function () {
-        document.documentElement.addEventListener('keyup', keyListener, false);
+  var docElem = document.documentElement,
+
+      bind = function () {
+        docElem.addEventListener('keyup', keyListener, false);
       },
       unbind = function () {
-        document.documentElement.removeEventListener('keyup', keyListener);
+        docElem.removeEventListener('keyup', keyListener);
       },
   
       keyListener = function (evt) {
-//        console.log(evt.keyCode);
         evt.preventDefault();
         switch (evt.keyCode) {
           case 27: /* Esc */
-            if (!sppa.main.infopane.classList.contains('infopane--offscreen')) {
-              sppa.main.infopaneToggle();
+            if (docElem.getAttribute('data-infopane')) {
+              sppa.main.toggleInfopane();
+            } else if (docElem.getAttribute('data-editmode')) {
+              sppa.editmode.toggle();
             }
             break;
           case 33: /* PageUp */
@@ -35,13 +38,13 @@ sppa.keybindings = (function () {
             sppa.slides.goto(sppa.slides.lastSlideIndex);
             break;
           case 73: /* i */
-            sppa.main.infopaneToggle();
+            sppa.main.toggleInfopane();
             break;
           case 69: /* e */
             sppa.editmode.toggle();
             break;
           case 70: /* f */
-            sppa.main.fullscreenToggle();
+            sppa.main.toggleFullscreen();
             break;
         }
       };

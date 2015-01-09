@@ -57,7 +57,6 @@ sppa.slides = (function () {
           if (i === 0) {
             newSlide.classList.add('slide--active');
           }
-          console.log(newSlide);
           docFrag.appendChild(newSlide);
         }
         clearSlideContainer();

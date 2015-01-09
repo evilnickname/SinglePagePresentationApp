@@ -5,7 +5,25 @@
   z-index: 100;
 }
 
-.toggleEditMode {
+.editbar .icon,
+[data-editmode] .editbar__toggleEditMode .icon,
+[data-editmode][data-infopane] .editbar__toggleInfoPane .icon,
+[data-editmode][data-fullscreen] .editbar__toggleFullScreen .icon {
+  color: #eee;
+}
+
+[data-editmode] .icon,
+[data-infopane] .editbar__toggleInfoPane .icon,
+[data-fullscreen] .editbar__toggleFullScreen .icon {
+  color: #999;
+}
+
+.editbar .icon-arrow-minimise,
+[data-fullscreen] .editbar .icon-arrow-maximise {
+  display: none;
+}
+[data-fullscreen] .editbar .icon-arrow-minimise {
+  display: inline-block;
 }
 
 .editor {
@@ -13,18 +31,51 @@
 }
 
 [data-editmode] .editor {
-  display: block;
   background-color: #333;
+  box-shadow: inset 0px 0 8px -4px rgba(0, 0, 0, .5), inset 1px 0 1px 0 rgba(0, 0, 0, .75);
+  color: white;
+  display: block;
+  height: 100vh;
+  padding: 2vh 2vw;
   position: fixed;
   right: 0;
   top: 0;
   width: 50vw;
-  height: 100vh;
   z-index: 5;
-  padding: 2vh 2vw;
 }
 
 .editor textarea {
   height: 45vh;
+  margin: -1.5em 0 1em;
   width: 45vw;
+}
+
+.editor__button {
+  background-color: transparent;
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 8px;
+  height:48px;
+  transition: background-color 0.2s ease-in;
+  width: 48px;
+}
+.editor__button:hover {
+  background-color: rgba(255,255,255,0.25);
+}
+.editor__button .icon {
+  color: #eee;
+  height: 48px;
+  position: absolute; top: 0; left: 0;
+  width: 48px;
+}
+.editor__button--multiple {
+  width: 80px;
+}
+.editor__button--multiple .icon + .icon {
+  left: 32px;
+}
+
+.editor__button .icon-refresh {
+  left: -2px;
+  top: -2px;
+  transform: scaleX(-1);
 }

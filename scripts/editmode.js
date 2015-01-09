@@ -4,8 +4,7 @@ sppa.editmode = (function () {
   var _editor = document.getElementById('editor'),
       _slide,
       
-      init = function () {
-        document.getElementById('toggleEditMode').addEventListener('click', toggle, false);
+      attachEventListeners = function () {
         document.getElementById('insertAfter').addEventListener('click', insertSlideAfter, false);
         document.getElementById('insertBefore').addEventListener('click', insertSlideBefore, false);
         document.getElementById('deleteSlide').addEventListener('click', deleteSlide, false);
@@ -81,7 +80,7 @@ sppa.editmode = (function () {
       }
   ;
   return {
-    init: init,
+    attachEventListeners: attachEventListeners,
     toggle: toggle,
     swapEditor: swapEditor
   };
