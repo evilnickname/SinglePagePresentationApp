@@ -2,7 +2,7 @@
   display: none;
 }
 
-[data-editmode] .editor {
+.inEditmode .editor {
   background-color: #333;
   box-shadow: inset 0px 0 8px -4px rgba(0, 0, 0, .5), inset 1px 0 1px 0 rgba(0, 0, 0, .75);
   color: white;

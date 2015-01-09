@@ -27,7 +27,7 @@
   margin-bottom: 1em;
 }
 
-[data-editmode] .slide {
+.inEditmode .slide {
   margin: 2.5vh 2.5vw;
   -webkit-transform: scale(.45);
   transform: scale(.45);

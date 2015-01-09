@@ -41,8 +41,6 @@ sppa.main = (function () {
 
         /* fullscreen */
         fullscreen.addFullscreenchangeEventListener();
-
-
       },
 
       fullscreen = {
@@ -73,7 +71,7 @@ sppa.main = (function () {
 
         fullscreenchangeListener : function () {
           if (!fullscreen.hasFullscreenElement()) {
-            sppa.main.toggleDocMode('fullscreen');
+            sppa.main.toggleDocMode('isFullscreen');
           }
         },
 
@@ -98,7 +96,7 @@ sppa.main = (function () {
       },
 
       toggleInfopane = function () {
-        sppa.main.toggleDocMode('infopane');
+        sppa.main.toggleDocMode('showsInfopane');
       },
 
       toggleFullscreen = function () {
@@ -107,16 +105,11 @@ sppa.main = (function () {
         } else {
           fullscreen.exitFullscreen();
         }
-        sppa.main.toggleDocMode('fullscreen');
+        sppa.main.toggleDocMode('isFullscreen');
       },
 
-      toggleDocMode = function (mode) {
-        var docMode = 'data-' + mode;
-        if (docElem.getAttribute(docMode)) {
-          docElem.removeAttribute(docMode);
-        } else {
-          docElem.setAttribute(docMode, true);
-        }
+      toggleDocMode = function (docMode) {
+        docElem.classList.toggle(docMode);
       }
 
   return {

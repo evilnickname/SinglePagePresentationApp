@@ -70,11 +70,11 @@ sppa.editmode = (function () {
               
       toggle = function() {
         var docElem = document.documentElement;
-        if (docElem.getAttribute('data-editmode')) {
-          docElem.removeAttribute('data-editmode');
+        if (docElem.classList.contains('inEditmode')) {
+          docElem.classList.remove('inEditmode');
           slideEditorBreakdown();
         } else {
-          docElem.setAttribute('data-editmode', true);
+          docElem.classList.add('inEditmode');
           slideEditorSetup();
         }
       }

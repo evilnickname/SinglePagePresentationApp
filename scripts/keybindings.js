@@ -14,9 +14,9 @@ sppa.keybindings = (function () {
         evt.preventDefault();
         switch (evt.keyCode) {
           case 27: /* Esc */
-            if (docElem.getAttribute('data-infopane')) {
+            if (docElem.classList.contains('showsInfopane')) {
               sppa.main.toggleInfopane();
-            } else if (docElem.getAttribute('data-editmode')) {
+            } else if (docElem.classList.contains('inEditmode')) {
               sppa.editmode.toggle();
             }
             break;
