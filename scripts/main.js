@@ -24,6 +24,7 @@ sppa.main = (function () {
         sppa.slides.init();
         sppa.keybindings.bind();
         attachEventListeners();
+        fullscreen.setup();
       },
       
       attachEventListeners = function () {
@@ -32,28 +33,36 @@ sppa.main = (function () {
         document.getElementById('prevSlide').addEventListener('click', sppa.slides.prev,false);
 
         /* edit bar */
-        document.getElementById('toggleFullscreen').addEventListener('click', sppa.main.toggleFullscreen, false);
         document.getElementById('toggleInfoPane').addEventListener('click', sppa.main.toggleInfopane, false);
         document.getElementById('toggleEditMode').addEventListener('click', sppa.editmode.toggle, false);
 
         /* edit functions */
         sppa.editmode.attachEventListeners();
-
-        /* fullscreen */
-        fullscreen.addFullscreenchangeEventListener();
       },
 
       fullscreen = {
-        /* https://developer.mozilla.org/en-US/docs/Web/Guide/API/DOM/Using_full_screen_mode#Toggling_fullscreen_mode */
-        addFullscreenchangeEventListener : function () {
-          if ('requestFullscreen' in docElem) {
-            document.addEventListener('fullscreenchange', fullscreen.fullscreenchangeListener, false)
-          } else if ('msRequestFullscreen' in docElem) {
-            document.addEventListener('MSFullscreenChange', fullscreen.fullscreenchangeListener, false)
-          } else if ('mozRequestFullScreen' in docElem) {
-            document.addEventListener('mozfullscreenchange', fullscreen.fullscreenchangeListener, false)
-          } else if ('webkitRequestFullScreen' in docElem) {
-            document.addEventListener('webkitfullscreenchange', fullscreen.fullscreenchangeListener, false)
+        setup : function () {
+          if (fullscreen.supported()) {
+            document.getElementById('toggleFullscreen').addEventListener('click', fullscreen.toggle, false);
+            fullscreen.addFullscreenchangeEventListener(fullscreen.onFullscreenchange);
+          } else {
+            var btn = document.getElementById('toggleFullscreen');
+            btn.parentNode.removeChild(btn);
+            sppa.main.toggleFullscreen = function () {
+              return false;
+            };
+          }
+        },
+
+        addFullscreenchangeEventListener : function (callback) {
+          if (docElem.requestFullscreen) {
+            document.addEventListener('fullscreenchange', callback, false)
+          } else if (docElem.msRequestFullscreen) {
+            document.addEventListener('MSFullscreenChange', callback, false)
+          } else if (docElem.mozRequestFullScreen) {
+            document.addEventListener('mozfullscreenchange', callback, false)
+          } else if (docElem.webkitRequestFullScreen) {
+            document.addEventListener('webkitfullscreenchange', callback, false)
           }
         },
 
@@ -69,17 +78,28 @@ sppa.main = (function () {
           }
         },
 
-        fullscreenchangeListener : function () {
-          if (!fullscreen.hasFullscreenElement()) {
-            sppa.main.toggleDocMode('isFullscreen');
+        fullscreenElement : function () {
+          if (docElem.requestFullscreen) {
+            return document.fullscreenElement();
+          } else if (docElem.msRequestFullscreen) {
+            return document.msFullscreenElement;
+          } else if (docElem.mozRequestFullScreen) {
+            return document.mozFullScreenElement;
+          } else if (docElem.webkitRequestFullscreen) {
+            return document.webkitFullscreenElement;
+          } else {
+            return null;
           }
         },
 
-        hasFullscreenElement : function () {
-          return (document.fullscreenElement
-                  || document.mozFullScreenElement
-                  || document.webkitFullscreenElement
-                  || document.msFullscreenElement);
+        isFullscreen : function () {
+          return (fullscreen.fullscreenElement() && fullscreen.fullscreenElement() !== null) ? true : false;
+        },
+
+        onFullscreenchange : function () {
+          if (!fullscreen.isFullscreen()) {
+            docElem.classList.remove('isFullscreen');
+          }
         },
 
         requestFullscreen : function () {
@@ -92,20 +112,27 @@ sppa.main = (function () {
           } else if (docElem.webkitRequestFullscreen) {
             docElem.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
           }
+        },
+
+        supported : function () {
+          return (docElem.requestFullscreen
+                  || docElem.msRequestFullscreen
+                  || docElem.mozRequestFullScreen
+                  || docElem.webkitRequestFullscreen) ? true : false;
+        },
+
+        toggle: function () {
+          if (!fullscreen.isFullscreen()) {
+            fullscreen.requestFullscreen();
+          } else {
+            fullscreen.exitFullscreen();
+          }
+          sppa.main.toggleDocMode('isFullscreen');
         }
       },
 
       toggleInfopane = function () {
         sppa.main.toggleDocMode('showsInfopane');
-      },
-
-      toggleFullscreen = function () {
-        if (!fullscreen.hasFullscreenElement()) {
-          fullscreen.requestFullscreen();
-        } else {
-          fullscreen.exitFullscreen();
-        }
-        sppa.main.toggleDocMode('isFullscreen');
       },
 
       toggleDocMode = function (docMode) {
@@ -116,7 +143,7 @@ sppa.main = (function () {
     init: init,
     slideContainer: slideContainer,
     toggleInfopane: toggleInfopane,
-    toggleFullscreen: toggleFullscreen,
+    toggleFullscreen: fullscreen.toggle,
     toggleDocMode: toggleDocMode
   }
 })();

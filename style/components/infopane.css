@@ -1,23 +1,20 @@
 .infopane {
-  position: fixed; top: 0; left: 50%;
-  z-index: 100;
-  width: 600px;
-  padding: 10px;
-  margin-left: -300px;
-  
   background-color: #333;
   border: 1vw solid #000;
   border-top: 0;
   border-radius: 0 0 20px 20px;
-  color: white;
-
   box-shadow: initial;
+  color: white;
+  margin-left: -300px;
+  position: fixed; top: 0; left: 50%;
+  padding: 10px;
   -webkit-transform: translate3D(0%, -100%, 0px);
   transform: translate3D(0%, -100%, 0px);
-
   transition-property: boxshadow, transform;
   transition-duration: 0.4s;
   transition-timing-function: ease-in;
+  width: 600px;
+  z-index: 100;
 }
 
 .showsInfopane .infopane {
@@ -37,8 +34,8 @@
 }
 
 .infopane .icon {
-  position: relative; top: 4px;
   color: white;
   height: 20px;
+  position: relative; top: 4px;
   width: 20px;
 }
