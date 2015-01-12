@@ -2,6 +2,8 @@
 
 Single page, plain vanilla javascript presentation app.
 
+[Demo!](https://evilnickname.github.io/single-page-presentation-app/)
+
 Features:
 - Fullscreen slides (uses the HTML5 Fullscreen API);
 - Add, remove and edit slides;
