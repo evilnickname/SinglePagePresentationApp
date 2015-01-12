@@ -3,9 +3,11 @@
   color: black;
   font-size: 2em;
   height: 100vh;
+  left: 0;
   margin: 0;
   padding: 5vw 10vw;
-  position: fixed; top: 0; left: 0;
+  position: fixed;
+  top: 0;
   -webkit-transform: scale(1);
   transform: scale(1);
   -webkit-transform-origin: 0 0;

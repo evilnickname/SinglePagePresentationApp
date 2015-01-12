@@ -46,7 +46,7 @@ sppa.slides = (function () {
 
       loadSlideDeck = function () {
         var storedSlideLength = sppa.storage.retrieve('sppa-slide-length'),
-             docFrag = document.createDocumentFragment();
+            docFrag = document.createDocumentFragment();
 
         if (!storedSlideLength) {
           return false;

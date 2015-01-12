@@ -4,7 +4,7 @@ sppa.extend = function (namespaceAsString) {
   var namespaceAsArray = namespaceAsString.split("."),
       parent = window;
 
-  for (var i = 0, l = namespaceAsArray.length; i < l; i++) {
+  for (var i = 0, n = namespaceAsArray.length; i < n; i++) {
     if (typeof parent[namespaceAsArray[i]] === 'undefined') {
       parent[namespaceAsArray[i]] = {};
     }

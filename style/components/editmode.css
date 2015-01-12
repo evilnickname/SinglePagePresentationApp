@@ -9,14 +9,18 @@
   display: block;
   height: 100vh;
   padding: 2vh 2vw;
-  position: fixed; top: 0; right: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
   width: 50vw;
   z-index: 5;
 }
 
 .editor textarea {
+  border: 1px solid black;
   height: 45vh;
   margin: -1.5em 0 1em;
+  padding: 3px 6px;
   width: 45vw;
 }
 
@@ -36,7 +40,9 @@
 .editor__button .icon {
   color: #eee;
   height: 48px;
-  position: absolute; top: 0; left: 0;
+  left: 0;
+  position: absolute;
+  top: 0;
   width: 48px;
 }
 

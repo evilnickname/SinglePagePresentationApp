@@ -1,6 +1,6 @@
 .toolbar {
-  position: fixed;
   bottom: 1vw;
+  position: fixed;
   right: 1vw;
   z-index: 50;
 }

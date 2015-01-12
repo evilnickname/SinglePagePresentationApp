@@ -1,6 +1,4 @@
-/**
- * Clearfix util: http://nicolasgallagher.com/micro-clearfix-hack
- */
+/* Clearfix util: http://nicolasgallagher.com/micro-clearfix-hack */
 .clearfix::before,
 .clearfix::after {
   content: " ";

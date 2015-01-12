@@ -1,10 +1,12 @@
 a, a:link {
+  /* link underline idea stolen from medium.com */
   background-image: linear-gradient(to bottom, transparent 0px, transparent 50%, currentColor 50%, currentColor 100%);
   background-position: 0 90%;
   background-repeat: repeat-x;
   background-size: 2px 2px;
   color: currentColor;
   text-decoration: none;
+  text-shadow: -1px 1px 0 white, 1px 1px 0 white; /* text shadow needs to match background color. Override where needed.  */
 }
 a:hover {
   background-image: linear-gradient(to bottom, transparent 0px, transparent 50%, #999 50%, #999 100%);

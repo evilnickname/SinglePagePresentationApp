@@ -6,6 +6,7 @@
   padding: 0;
 }
 
+/* gotta have some normalized focus */
 :focus {
   border: 1px dotted currentColor;
   outline: none;
