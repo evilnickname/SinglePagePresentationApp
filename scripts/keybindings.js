@@ -35,7 +35,7 @@ sppa.keybindings = (function () {
             sppa.slides.goto(0);
             break;
           case 35: /* End */
-            sppa.slides.goto(sppa.slides.lastSlideIndex);
+            sppa.slides.goto(document.getElementsByClassName('slide').length - 1);
             break;
           case 73: /* i */
             sppa.main.toggleInfopane();

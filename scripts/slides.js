@@ -95,7 +95,6 @@ sppa.slides = (function () {
     createSlide: createSlide,
     init: init,
     goto: goto,
-    lastSlideIndex: _slides.length - 1,
     next: next,
     prev: prev
   };
